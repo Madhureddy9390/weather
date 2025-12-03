@@ -64,20 +64,52 @@ function App() {
         {error && <p className="error">{error}</p>}
         {weather && (
           <div className="weather-info">
-            <h2>
-              {weather.name}, {weather.sys.country}
-            </h2>
-            <p>
-              <img
-                src={`https://openweathermap.org/img/wn/${weather.weather[0].icon}@2x.png`}
-                alt={weather.weather[0].description}
-                style={{ verticalAlign: 'middle' }}
-              />
-              {weather.weather[0].main} ({weather.weather[0].description})
-            </p>
-            <p>Temperature: {weather.main.temp} °C</p>
-            <p>Humidity: {weather.main.humidity}%</p>
-            <p>Wind: {weather.wind.speed} m/s</p>
+            <div className="weather-header-row">
+              <div>
+                <p className="weather-label">Current weather in</p>
+                <h2>
+                  {weather.name}, {weather.sys.country}
+                </h2>
+              </div>
+              <div className="weather-icon-wrap">
+                <img
+                  src={`https://openweathermap.org/img/wn/${weather.weather[0].icon}@2x.png`}
+                  alt={weather.weather[0].description}
+                />
+              </div>
+            </div>
+
+            <div className="weather-main-row">
+              <div className="weather-temp-block">
+                <span className="weather-temp">{Math.round(weather.main.temp)}</span>
+                <span className="weather-temp-unit">°C</span>
+              </div>
+              <div className="weather-description-block">
+                <p className="weather-main-text">
+                  {weather.weather[0].main}
+                </p>
+                <p className="weather-sub-text">
+                  {weather.weather[0].description}
+                </p>
+              </div>
+            </div>
+
+            <div className="weather-meta-row">
+              <div className="weather-chip">
+                <span className="chip-label">Humidity</span>
+                <span className="chip-value">{weather.main.humidity}%</span>
+              </div>
+              <div className="weather-chip">
+                <span className="chip-label">Wind</span>
+                <span className="chip-value">{weather.wind.speed} m/s</span>
+              </div>
+              <div className="weather-chip">
+                <span className="chip-label">Feels like</span>
+                <span className="chip-value">
+                  {Math.round(weather.main.feels_like)}°C
+                </span>
+              </div>
+            </div>
           </div>
         )}
       </div>
