@@ -1,0 +1,175 @@
+/* Professional, modern weather app styling */
+body, #root {
+  margin: 0;
+  padding: 0;
+  min-height: 100vh;
+  min-width: 100vw;
+  font-family: 'Roboto', Arial, Helvetica, sans-serif;
+  box-sizing: border-box;
+  /* Remove background here so only .dynamic-bg controls background visuals */
+  background: none !important;
+}
+
+.dynamic-bg {
+  min-height: 100vh;
+  min-width: 100vw;
+  width: 100vw;
+  height: 100vh;
+  position: fixed;
+  left: 0;
+  top: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 0;
+}
+
+/* Background image changes according to weather type */
+.dynamic-bg.sunny,
+.dynamic-bg.clear {
+  /* Sunny road scene */
+  background: url('https://t4.ftcdn.net/jpg/03/29/60/15/360_F_329601547_xDmIzUwEyDSvDW6eGWQvFy044zGxcDTP.jpg')
+    center center/cover no-repeat;
+}
+
+.dynamic-bg.cloudy {
+  /* Cloudy field scene */
+  background: url('https://img.freepik.com/free-photo/grassy-field-with-leafless-trees-distance-cloudy-sky-background_181624-4535.jpg?semt=ais_hybrid&w=740&q=80')
+    center center/cover no-repeat;
+}
+
+.dynamic-bg.rainy {
+  /* Rainy effect scene */
+  background: url('https://img.freepik.com/free-photo/weather-effects-composition_23-2149853295.jpg?semt=ais_hybrid&w=740&q=80')
+    center center/cover no-repeat;
+}
+
+/* Winter snowy road scene (from your link) */
+.dynamic-bg.winter {
+  background: url('https://media.istockphoto.com/id/1356315000/photo/tree-lined-winter-road-on-a-beautiful-winter-day.jpg?s=612x612&w=0&k=20&c=dumd5m__6g2K-NjOaJyqC-wWojD0hG2-jz4U8R9PRdo=')
+    center center/cover no-repeat;
+}
+
+/* Hazy sky scene */
+.dynamic-bg.haze {
+  background: url('https://www.aprilaire.com/blog/wp-content/uploads/2022/08/Hazy-Skies-scaled.webp')
+    center center/cover no-repeat;
+}
+
+/* Global frosted-glass effect for all key containers */
+.frosted, .weather-app {
+  position: relative;
+  z-index: 2;
+  background: rgba(255,255,255,0.87);
+  border-radius: 26px;
+  box-shadow: 0 14px 48px rgba(31,38,135,0.18), 0 1.5px 4px rgba(71,95,166,0.11);
+  padding: 3rem 2.5rem 2.5rem;
+  min-width: 320px;
+  max-width: 90vw;
+  backdrop-filter: blur(8px) saturate(1.16);
+  border: 1.6px solid rgba(255,255,255,0.16);
+}
+
+.weather-app h1 {
+  margin-bottom: 2rem;
+  font-size: 2.4rem;
+  color: #1976d2;
+  letter-spacing: 1px;
+  font-weight: bold;
+  text-align: center;
+}
+
+.weather-form {
+  margin-bottom: 2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.weather-form input {
+  padding: 1rem 1.5rem;
+  border-radius: 12px;
+  border: 1.5px solid #b2bec3;
+  font-size: 1.1rem;
+  background: rgba(255,255,255, .92);
+  box-shadow: 0 2px 12px rgba(120, 144, 156, 0.07);
+  transition: border-color 0.18s, box-shadow 0.22s;
+  outline: none;
+}
+.weather-form input:focus {
+  border-color: #1976d2;
+  box-shadow: 0 0 0 2px #b3e5fc;
+}
+.weather-form button {
+  background: linear-gradient(90deg, #2196f3 30%, #21cbf3 100%);
+  color: #fff;
+  border: none;
+  border-radius: 12px;
+  padding: 1rem 0;
+  font-size: 1.15rem;
+  font-weight: 700;
+  cursor: pointer;
+  box-shadow: 0 2px 12px rgba(33, 203, 243, 0.17);
+  transition: box-shadow 0.2s, background 0.25s, transform 0.13s;
+}
+.weather-form button:hover:not(:disabled) {
+  box-shadow: 0 8px 24px rgba(33, 150, 243, 0.16);
+  background: linear-gradient(90deg, #1976d2 40%, #00bcd4 100%);
+  transform: translateY(-2px) scale(1.03);
+}
+.weather-form button:disabled {
+  background: #dfe6e9;
+  color: #636e72;
+  cursor: not-allowed;
+}
+
+.weather-info {
+  background: rgba(255,255,255,0.97);
+  border-radius: 18px;
+  box-shadow: 0 6px 20px rgba(33, 150, 243, 0.08);
+  padding: 2.2rem 1.5rem;
+  text-align: center;
+  min-width: 250px;
+}
+.weather-info h2 {
+  margin: 0 0 12px 0;
+  font-size: 2rem;
+  color: #1976d2;
+  font-weight: 700;
+}
+.weather-info p {
+  margin: 13px 0;
+  font-size: 1.18rem;
+  color: #334E68;
+  letter-spacing: 0.03em;
+}
+.weather-info img {
+  width: 76px;
+  height: 76px;
+  vertical-align: middle;
+}
+
+.error {
+  color: #d32f2f;
+  background: #fff3f3;
+  border-radius: 8px;
+  padding: 10px 20px;
+  font-size: 1rem;
+  margin: 18px 0;
+  box-shadow: 0 1px 4px rgba(211, 47, 47, 0.09);
+}
+
+/* (All complex animations removed for a simpler, static professional look) */
+
+@media (max-width: 600px) {
+  .frosted, .weather-app {
+    padding: 1.3rem 0.7rem 1.1rem;
+  }
+  .weather-info {
+    padding: 1.1rem 0.55rem;
+    min-width: unset;
+  }
+  .weather-app h1 {
+    font-size: 1.33rem;
+  }
+}
